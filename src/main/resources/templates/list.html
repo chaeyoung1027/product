@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"  href="/main.css">
+</head>
+<body>
+    <h1 th:text="'상품목록'"></h1>
+    <table  width="500px">
+        <tr><td>productId</td><td>productName</td><td>ETC</td></tr>
+        <tr th:each="p:${list1}">
+            <td th:text="${p.productId}"><td th:text="${p.productName}"><td>
+            <a th:href="@{'/update/'+${p.productId}}">수정</a>
+            <a th:href="@{'/delete/'+${p.productId}}">삭제</a></td>
+
+        </tr>
+    </table>
+<a href="/add">상품등록</a>
+</body>
+</html>
