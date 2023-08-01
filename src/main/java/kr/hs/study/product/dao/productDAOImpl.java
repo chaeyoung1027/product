@@ -28,7 +28,7 @@ public class productDAOImpl implements productDAO{
 
     @Override
     public void del_Product(String id) {
-        String sql="delete from product where productId="+id;
+        String sql="delete from product where productId='"+id+"'";
         jdbc.update(sql);
 
     }
