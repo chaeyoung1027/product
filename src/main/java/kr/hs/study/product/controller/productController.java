@@ -15,14 +15,13 @@ import java.util.List;
 public class productController {
     @Autowired
     private productService service;
-    //
 
-    @GetMapping("/")
-    public String list(Model model){
-        List<productDTO> list=service.listAll();
-        model.addAttribute("list1",list);
-        return "list";
-    }
+//    @GetMapping("/")
+//    public String list(Model model){
+//        List<productDTO> list=service.listAll();
+//        model.addAttribute("list1",list);
+//        return "list";
+//    }
     @GetMapping("/add")
     public String add_form() {
         return "add_form";
@@ -35,8 +34,16 @@ public class productController {
         service.insert(dto);
         return "redirect:/";
 
-
     }
+
+    @GetMapping("/list")
+    public String list(Model model){
+        List<productDTO> list = service.listAll();
+        System.out.println("list : "+list);
+        model.addAttribute("list1",list);
+        return "list";
+    }
+
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") String id) {
         service.del_Product(id);
