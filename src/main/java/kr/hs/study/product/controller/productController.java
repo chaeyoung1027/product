@@ -29,20 +29,10 @@ public class productController {
     @PostMapping("/add_done")
     // 사용자가 입력값이 productDTO에 자동주입해야해
     public String add_done(productDTO dto) {
-
         System.out.println("id:"+dto.getProductId());
         service.insert(dto);
         return "redirect:/";
-
     }
-
-//    @GetMapping("/list")
-//    public String list(Model model){
-//        List<productDTO> list = service.listAll();
-//        System.out.println("list : "+list);
-//        model.addAttribute("list1",list);
-//        return "list";
-//    }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") String id) {
@@ -54,8 +44,13 @@ public class productController {
     public String update_form(@PathVariable("id") String id, Model model) {
       productDTO  dto=service.readOne(id);
       model.addAttribute("dto",dto);
-        System.out.println("dto:"+dto);
-                return "readOne";
+      System.out.println("dto:"+dto);
+      return "readOne";
     }
-
+    @PostMapping("/update_done")
+    public String update_done(Model model){
+        List<productDTO> list=service.listAll();
+        model.addAttribute("list1",list);
+        return "list";
+    }
 }
