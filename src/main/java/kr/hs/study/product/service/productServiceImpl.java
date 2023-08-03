@@ -32,4 +32,9 @@ public class productServiceImpl implements productService{
     public productDTO readOne(String id) {
         return dao.readOne(id);
     }
+
+    @Override
+    public void update(productDTO dto) {
+        dao.update(dto);
+    }
 }
